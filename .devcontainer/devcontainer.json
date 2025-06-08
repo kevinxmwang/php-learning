@@ -1,1 +1,17 @@
-
+{
+    "name": "PHP Development",
+    "image": "mcr.microsoft.com/devcontainers/php:8.2",
+    "features": {
+      "ghcr.io/devcontainers/features/apache-httpd:1": {}
+    },
+    "forwardPorts": [8080, 80],
+    "postCreateCommand": "sudo service apache2 start",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "bmewburn.vscode-intelephense-client",
+          "xdebug.php-debug"
+        ]
+      }
+    }
+  }
