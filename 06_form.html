@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Form Example</title>
+</head>
+<body>
+    <h2>User Registration Form</h2>
+    <form action="06_form_handler.php" method="POST">
+        <p>
+            <label>Name:</label><br>
+            <input type="text" name="name" required>
+        </p>
+        <p>
+            <label>Email:</label><br>
+            <input type="email" name="email" required>
+        </p>
+        <p>
+            <label>Age:</label><br>
+            <input type="number" name="age" min="1" max="120">
+        </p>
+        <p>
+            <label>Gender:</label><br>
+            <input type="radio" name="gender" value="male"> Male
+            <input type="radio" name="gender" value="female"> Female
+            <input type="radio" name="gender" value="other"> Other
+        </p>
+        <p>
+            <label>Hobbies:</label><br>
+            <input type="checkbox" name="hobbies[]" value="reading"> Reading<br>
+            <input type="checkbox" name="hobbies[]" value="sports"> Sports<br>
+            <input type="checkbox" name="hobbies[]" value="music"> Music<br>
+            <input type="checkbox" name="hobbies[]" value="travel"> Travel<br>
+        </p>
+        <p>
+            <input type="submit" value="Register">
+        </p>
+    </form>
+</body>
+</html>
