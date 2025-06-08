@@ -1,11 +1,9 @@
 <?php
 session_start();
-
 // Initialize todos array if not exists
 if (!isset($_SESSION['todos'])) {
     $_SESSION['todos'] = [];
 }
-
 // Handle form submission
 if ($_POST) {
     if (isset($_POST['add_todo']) && !empty($_POST['todo_text'])) {
@@ -19,23 +17,23 @@ if ($_POST) {
     
     if (isset($_POST['delete_todo'])) {
         $todoId = $_POST['todo_id'];
-        $_SESSION['todos'] = array_filter($_SESSION['todos'], function($todo) use ($todoId) {
+        $_SESSION['todos'] = array_values(array_filter($_SESSION['todos'], function($todo) use ($todoId) {
             return $todo['id'] != $todoId;
-        });
+        }));
     }
     
     if (isset($_POST['toggle_todo'])) {
         $todoId = $_POST['todo_id'];
-        foreach ($_SESSION['todos'] as &$todo) {
+        // Fixed: Using array indexing instead of references to avoid the bug
+        foreach ($_SESSION['todos'] as $index => $todo) {
             if ($todo['id'] == $todoId) {
-                $todo['completed'] = !$todo['completed'];
+                $_SESSION['todos'][$index]['completed'] = !$_SESSION['todos'][$index]['completed'];
                 break;
             }
         }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
